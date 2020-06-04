@@ -34,7 +34,7 @@ sys.path.append(os.path.abspath(os.path.join('..', '_extensions')))
 # the repository version needs to be the one that is loaded:
 sys.path.insert(0, os.path.abspath(os.path.join('..', '..', '..', 'lib')))
 
-VERSION = '2.9'
+VERSION = '2.9_ja'
 AUTHOR = 'Ansible, Inc'
 
 
@@ -147,7 +147,7 @@ html_context = {
     'current_version': version,
     'latest_version': '2.9',
     # list specifically out of order to make latest work
-    'available_versions': ('latest', '2.8', '2.7', 'devel'),
+    'available_versions': ('latest', '2.9_ja', '2.8', '2.7', 'devel'),
     'css_files': ('_static/ansible.css',  # overrides to the standard theme
                   ),
 }
