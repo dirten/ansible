@@ -236,19 +236,9 @@ You can link from your module documentation to other module docs, other resource
 * ``R()`` for cross-references with a heading (added in Ansible 2.10). For example: ``See R(Cisco IOS Platform Guide,ios_platform_options)``.  Use the RST anchor for the cross-reference. See :ref:`adding_anchors_rst` for details.
 * ``M()`` for module names. For example: ``See also M(ansible.builtin.yum) or M(community.general.apt_rpm)``.
 
-There are also some macros which do not create links but we use them to display certain types of
-content in a uniform way:
-
-* ``I()`` for option names. For example: ``Required if I(state=present).``  This is italicized in
-  the documentation.
-* ``C()`` for files and option values. For example: ``If not set the environment variable C(ACME_PASSWORD) will be used.``  This displays with a mono-space font in the documentation.
-* ``B()`` currently has no standardized usage.  It is displayed in boldface in the documentation.
-* ``HORIZONTALLINE`` is used sparingly as a separator in long descriptions.  It becomes a horizontal rule (the ``<hr>`` html tag) in the documentation.
-
 .. note::
 
   For links between modules and documentation within a collection, you can use any of the options above. For links outside of your collection, use ``R()`` if available. Otherwise, use ``U()`` or ``L()`` with full URLs (not relative links). For modules, use ``M()`` with the FQCN or ``ansible.builtin`` as shown in the example. If you are creating your own documentation site, you will need to use the `intersphinx extension <https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html>`_ to convert ``R()`` and ``M()`` to the correct links.
-
 
 .. note::
     - To refer to a group of modules in a collection, use ``R()``.  When a collection is not the right granularity, use ``C(..)``:
@@ -256,6 +246,18 @@ content in a uniform way:
         - ``Refer to the R(community.kubernetes collection, plugins_in_community.kubernetes) for information on managing kubernetes clusters.``
         - ``The C(win_*) modules (spread across several collections) allow you to manage various aspects of windows hosts.``
 
+Call out option names, option values, and environment variables in the module documentation using semantic markup. These macros display the content in a uniform way without creating links. With semantic markup, we can change the look of the output without changing the underlying code. The correct formats for semantic markup are:
+
+* ``O()`` for option names, whether mentioned alone or with values. For example: ``Required if O(state=present).``
+* ``V()`` for option values when mentioned alone. For example: ``Possible values include V(monospace) and V(pretty).``
+* ``E()`` for environment variables. For example: ``If not set the environment variable E(ACME_PASSWORD) will be used.``
+
+You can also use standard Python formatting to control the look of other terms in module documentation:
+
+* ``C()`` for monospace (code) font. For example: ``This module functions like the unix command C(foo).``
+* ``B()`` for bold font.
+* ``I()`` for italic font.
+* ``HORIZONTALLINE`` for a horizontal rule (the ``<hr>`` html tag) to separate long descriptions.
 
 .. note::
 
